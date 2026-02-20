@@ -18,6 +18,7 @@ modules:
       - starship
       - flatseal
       - ufw
+      - plymouth-theme-spinner # Added this so your boot logo actually works!
 
   - type: default-flatpaks
     install:
@@ -30,3 +31,16 @@ modules:
   - type: script
     scripts:
       - setup-krocbox-janitor.sh
+
+  - type: files
+    files:
+      - from: files/krocbox-wallpaper.png
+        to: /usr/share/backgrounds/krocbox-wallpaper.png
+      - from: files/krocbox-logo.png
+        to: /usr/share/pixmaps/krocbox-logo.png
+
+  - type: first-boot
+    gsettings:
+      org.gnome.desktop.background:
+        picture-uri: "'file:///usr/share/backgrounds/krocbox-wallpaper.png'"
+        picture-uri-dark: "'file:///usr/share/backgrounds/krocbox-wallpaper.png'"
