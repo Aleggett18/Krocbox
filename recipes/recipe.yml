@@ -1,5 +1,5 @@
 name: krocbox
-description: Balanced AMD Gaming & DevOps Workstation (Medium Hardened)
+description: Balanced AMD Gaming & DevOps Workstation (The Krocbox v1.0)
 base-image: ghcr.io/ublue-os/mainline:latest
 
 modules:
@@ -7,6 +7,7 @@ modules:
     remove:
       - gnome-initial-setup
       - fedora-user-agent
+      - fedora-logos
     install:
       - gnome-shell-extension-pop-shell
       - distrobox
@@ -18,7 +19,7 @@ modules:
       - starship
       - flatseal
       - ufw
-      - plymouth-theme-spinner # Added this so your boot logo actually works!
+      - plymouth-theme-spinner
 
   - type: default-flatpaks
     install:
@@ -44,3 +45,4 @@ modules:
       org.gnome.desktop.background:
         picture-uri: "'file:///usr/share/backgrounds/krocbox-wallpaper.png'"
         picture-uri-dark: "'file:///usr/share/backgrounds/krocbox-wallpaper.png'"
+
