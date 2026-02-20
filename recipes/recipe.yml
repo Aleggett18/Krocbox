@@ -1,6 +1,5 @@
 name: krocbox
 description: Balanced AMD Gaming & DevOps Workstation
-image-version: "1" # FIX: Added quotes to fix the "invalid reference" error
 base-image: ghcr.io/ublue-os/mainline:latest
 
 modules:
