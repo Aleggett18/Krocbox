@@ -2,9 +2,9 @@
 
 name: krocbox
 description: "Balanced AMD Gaming & DevOps Workstation"
-base-image: ghcr.io/ublue-os/main
-image-version: "40"
 
+base-image: ghcr.io/ublue-os/bluefin
+image-version: "40"
 modules:
   - type: rpm-ostree
     remove:
