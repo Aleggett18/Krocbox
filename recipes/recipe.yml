@@ -4,7 +4,7 @@ base-image: ghcr.io/ublue-os/bluefin
 image-version: "stable"
 
 modules:
-  # RPM-Ostree packages with safe removal
+  # RPM-Ostree packages with safe removal and branding tweaks
   - type: script
     scripts:
       - |
@@ -31,7 +31,17 @@ modules:
           ufw \
           plymouth-theme-spinner
 
-        echo "Custom logos will be handled by files module."
+        echo "Replacing default GNOME login screen logo..."
+        if [ -f /usr/share/pixmaps/krocbox-logo.png ]; then
+          mkdir -p /usr/share/icons/hicolor/256x256/apps
+          cp /usr/share/pixmaps/krocbox-logo.png /usr/share/icons/hicolor/256x256/apps/fedora-logo.png
+        fi
+
+        echo "Replacing Plymouth boot splash logo..."
+        if [ -f /usr/share/pixmaps/krocbox-logo.png ]; then
+          mkdir -p /usr/share/plymouth/themes/spinner
+          cp /usr/share/pixmaps/krocbox-logo.png /usr/share/plymouth/themes/spinner/spinner.png
+        fi
 
   # Script module for RPM Fusion and extra packages
   - type: script
