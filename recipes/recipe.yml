@@ -8,16 +8,17 @@ image-version: "stable"
 
 modules:
   - type: rpm-ostree
+    # Remove unneeded packages
     remove:
       - gnome-initial-setup
       - fedora-user-agent
       - fedora-logos
 
+    # Install core packages
     install:
       - gnome-shell-extension-pop-shell
       - distrobox
       - steam
-      - mesa-va-drivers-freeworld
       - mangohud
       - lact
       - tailscale
@@ -25,6 +26,20 @@ modules:
       - flatseal
       - ufw
       - plymouth-theme-spinner
+
+    # Enable extra repos needed for some packages
+    configurations:
+      - type: script
+        scripts:
+          - |
+            #!/bin/bash
+            # Enable RPM Fusion Free and Nonfree
+            rpm-ostree install \
+              https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+              https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+            # Now install packages from RPM Fusion
+            rpm-ostree install mesa-va-drivers-freeworld
 
   - type: default-flatpaks
     configurations:
