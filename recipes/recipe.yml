@@ -1,3 +1,8 @@
+name: krocbox
+description: "Balanced AMD Gaming & DevOps Workstation"
+base-image: ghcr.io/ublue-os/bluefin
+image-version: "stable"
+
 modules:
   # RPM-Ostree packages with safe removal
   - type: script
@@ -64,4 +69,4 @@ modules:
       - from: files/krocbox-wallpaper.png
         to: /usr/share/backgrounds/krocbox-wallpaper.png
       - from: files/krocbox-logo.png
-        to: /usr/share/pixmaps/krocbox-logo.pngpng
+        to: /usr/share/pixmaps/krocbox-logo.png
