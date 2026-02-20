@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://schema.blue-build.org
 name: krocbox
-description: Balanced AMD Gaming & DevOps Workstation
-image-version: 1
-base-image: ghcr.io/ublue-os/mainline:latest
+description: "Balanced AMD Gaming & DevOps Workstation"
+image-version: "1"
+base-image: "ghcr.io/ublue-os/mainline"
 
 modules:
   - type: rpm-ostree
