@@ -1,7 +1,6 @@
 name: krocbox
 description: "Balanced AMD Gaming & DevOps Workstation"
 base-image: ghcr.io/ublue-os/main:40
-image-version: 1
 
 modules:
   - type: rpm-ostree
@@ -9,6 +8,7 @@ modules:
       - gnome-initial-setup
       - fedora-user-agent
       - fedora-logos
+
     install:
       - gnome-shell-extension-pop-shell
       - distrobox
