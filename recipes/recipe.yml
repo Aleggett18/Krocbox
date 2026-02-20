@@ -1,26 +1,32 @@
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-
-name: krocbox
-description: "Balanced AMD Gaming & DevOps Workstation"
-
-base-image: ghcr.io/ublue-os/bluefin
-image-version: "stable"
-
 modules:
-  # Default repo packages only
-  - type: rpm-ostree
-    remove:
-      - gnome-initial-setup
-      - fedora-user-agent
-      - fedora-logos
-    install:
-      - gnome-shell-extension-pop-shell
-      - distrobox
-      - tailscale
-      - starship
-      - flatseal
-      - ufw
-      - plymouth-theme-spinner
+  # RPM-Ostree packages with safe removal
+  - type: script
+    scripts:
+      - |
+        #!/bin/bash
+        set -e
+
+        echo "Removing unwanted packages if they exist..."
+        for pkg in gnome-initial-setup fedora-user-agent fedora-logos; do
+          if rpm-ostree status --json | jq -r '.deployments[].basePackages[]' | grep -qx "$pkg"; then
+            echo "Removing $pkg..."
+            rpm-ostree override remove "$pkg"
+          else
+            echo "$pkg not installed; skipping..."
+          fi
+        done
+
+        echo "Installing required packages..."
+        rpm-ostree install \
+          gnome-shell-extension-pop-shell \
+          distrobox \
+          tailscale \
+          starship \
+          flatseal \
+          ufw \
+          plymouth-theme-spinner
+
+        echo "Custom logos will be handled by files module."
 
   # Script module for RPM Fusion and extra packages
   - type: script
@@ -52,10 +58,10 @@ modules:
     scripts:
       - setup-krocbox-janitor.sh
 
-  # Custom files
+  # Custom files (wallpaper and logos)
   - type: files
     files:
       - from: files/krocbox-wallpaper.png
         to: /usr/share/backgrounds/krocbox-wallpaper.png
       - from: files/krocbox-logo.png
-        to: /usr/share/pixmaps/krocbox-logo.png
+        to: /usr/share/pixmaps/krocbox-logo.pngpng
