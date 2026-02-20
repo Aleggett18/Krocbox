@@ -1,5 +1,6 @@
 name: krocbox
 description: Balanced AMD Gaming & DevOps Workstation
+image-version: 1
 base-image: ghcr.io/ublue-os/mainline:latest
 
 modules:
