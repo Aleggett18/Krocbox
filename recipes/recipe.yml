@@ -1,7 +1,7 @@
 name: krocbox
 description: "Balanced AMD Gaming & DevOps Workstation"
-base-image: ghcr.io/ublue-os/mainline:latest
-image-version: 1 # FIX: Satisfies the "required property" error
+base-image: ghcr.io/ublue-os/main:40
+image-version: 1
 
 modules:
   - type: rpm-ostree
