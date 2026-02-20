@@ -23,13 +23,14 @@ modules:
       - plymouth-theme-spinner
 
   - type: default-flatpaks
-    # Note: Using the simple version to avoid more server errors
-    install:
-      - org.mozilla.firefox
-      - com.discordapp.Discord
-      - im.riot.Element
-      - com.visualstudio.code
-      - org.audacityteam.Audacity
+    # FIX: This is the new 2026 'configurations' requirement
+    configurations:
+      - install:
+          - org.mozilla.firefox
+          - com.discordapp.Discord
+          - im.riot.Element
+          - com.visualstudio.code
+          - org.audacityteam.Audacity
 
   - type: script
     scripts:
