@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 
 name: krocbox
 description: "Balanced AMD Gaming & DevOps Workstation"
@@ -14,32 +15,32 @@ modules:
       - fedora-user-agent
       - fedora-logos
 
-    # Install core packages
+    # Install core packages from default repos
     install:
       - gnome-shell-extension-pop-shell
       - distrobox
       - steam
       - mangohud
-      - lact
       - tailscale
       - starship
       - flatseal
       - ufw
       - plymouth-theme-spinner
 
-    # Enable extra repos needed for some packages
-    configurations:
-      - type: script
-        scripts:
-          - |
-            #!/bin/bash
-            # Enable RPM Fusion Free and Nonfree
-            rpm-ostree install \
-              https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-              https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  - type: script
+    # Custom script module for RPM Fusion + extra packages
+    scripts:
+      - |
+        #!/bin/bash
+        set -e
 
-            # Now install packages from RPM Fusion
-            rpm-ostree install mesa-va-drivers-freeworld
+        echo "Enabling RPM Fusion Free & Nonfree repositories..."
+        rpm-ostree install \
+          https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+          https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+        echo "Installing mesa-va-drivers-freeworld from RPM Fusion..."
+        rpm-ostree install mesa-va-drivers-freeworld
 
   - type: default-flatpaks
     configurations:
