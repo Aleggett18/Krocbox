@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 
 name: krocbox
 description: "Balanced AMD Gaming & DevOps Workstation"
@@ -8,27 +7,23 @@ base-image: ghcr.io/ublue-os/bluefin
 image-version: "stable"
 
 modules:
+  # Default repo packages only
   - type: rpm-ostree
-    # Remove unneeded packages
     remove:
       - gnome-initial-setup
       - fedora-user-agent
       - fedora-logos
-
-    # Install core packages from default repos
     install:
       - gnome-shell-extension-pop-shell
       - distrobox
-      - steam
-      - mangohud
       - tailscale
       - starship
       - flatseal
       - ufw
       - plymouth-theme-spinner
 
+  # Script module for RPM Fusion and extra packages
   - type: script
-    # Custom script module for RPM Fusion + extra packages
     scripts:
       - |
         #!/bin/bash
@@ -39,9 +34,10 @@ modules:
           https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
           https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-        echo "Installing mesa-va-drivers-freeworld from RPM Fusion..."
-        rpm-ostree install mesa-va-drivers-freeworld
+        echo "Installing RPM Fusion packages..."
+        rpm-ostree install steam mangohud mesa-va-drivers-freeworld
 
+  # Flatpaks
   - type: default-flatpaks
     configurations:
       - install:
@@ -51,10 +47,12 @@ modules:
           - com.visualstudio.code
           - org.audacityteam.Audacity
 
+  # Janitor / custom script
   - type: script
     scripts:
       - setup-krocbox-janitor.sh
 
+  # Custom files
   - type: files
     files:
       - from: files/krocbox-wallpaper.png
