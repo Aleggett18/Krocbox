@@ -1,5 +1,6 @@
 name: krocbox
-description: Balanced AMD Gaming & DevOps Workstation (The Krocbox v1.0)
+description: Balanced AMD Gaming & DevOps Workstation
+image-version: 1 # FIX: Added required image-version property
 base-image: ghcr.io/ublue-os/mainline:latest
 
 modules:
@@ -22,7 +23,8 @@ modules:
       - plymouth-theme-spinner
 
   - type: default-flatpaks
-    install:
+    notify: true
+    install: # FIX: Ensured this is indented correctly for the new schema
       - org.mozilla.firefox
       - com.discordapp.Discord
       - im.riot.Element
@@ -42,7 +44,6 @@ modules:
 
   - type: first-boot
     gsettings:
-      org.gnome.desktop.background:
-        picture-uri: "'file:///usr/share/backgrounds/krocbox-wallpaper.png'"
-        picture-uri-dark: "'file:///usr/share/backgrounds/krocbox-wallpaper.png'"
-
+      - org.gnome.desktop.background:
+          picture-uri: "'file:///usr/share/backgrounds/krocbox-wallpaper.png'"
+          picture-uri-dark: "'file:///usr/share/backgrounds/krocbox-wallpaper.png'"
