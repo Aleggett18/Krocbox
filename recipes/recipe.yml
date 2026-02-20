@@ -1,6 +1,6 @@
 name: krocbox
 description: Balanced AMD Gaming & DevOps Workstation
-image-version: 1
+image-version: "1" # FIX: Added quotes to fix the "invalid reference" error
 base-image: ghcr.io/ublue-os/mainline:latest
 
 modules:
@@ -23,7 +23,6 @@ modules:
       - plymouth-theme-spinner
 
   - type: default-flatpaks
-    # FIX: This is the new 2026 'configurations' requirement
     configurations:
       - install:
           - org.mozilla.firefox
