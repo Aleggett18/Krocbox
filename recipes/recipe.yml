@@ -20,12 +20,14 @@ modules:
       - fastfetch
 
   - type: default-flatpaks
-    install:
-      - org.mozilla.firefox
-      - com.discordapp.Discord
-      - com.visualstudio.code
-      - org.gnome.World.PikaBackup
-      - com.spotify.Client
+    configurations:
+      - scope: system
+        install:
+          - org.mozilla.firefox
+          - com.discordapp.Discord
+          - com.visualstudio.code
+          - org.gnome.World.PikaBackup
+          - com.spotify.Client
 
   - type: script
     scripts:
