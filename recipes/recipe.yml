@@ -35,8 +35,8 @@ modules:
   # Silent boot
   - type: kargs
     kargs:
-      quiet: true
-      splash: true
+      - quiet
+      - splash
 
   # Boot splash
   - type: plymouth
