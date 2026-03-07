@@ -1,38 +1,32 @@
 name: krocbox
-description: "Balanced AMD Gaming & DevOps Workstation (Medium Hardened)"
-base-image: ghcr.io/ublue-os/mainline:latest
-image-version: "stable"
+description: Krocbox OS | Cloud Native Gaming & DevOps Workstation
+base-image: ghcr.io/ublue-os/bazzite-dx
+image-version: stable
 
 modules:
-  # Main setup: remove unwanted packages, install essentials, replace logos
-  - type: script
-    scripts:
-      - files/scripts/krocbox-setup.sh
+  - type: os-release
+    properties:
+      NAME: krocbox
+      ID: krocbox
+      PRETTY_NAME: Krocbox OS
+      DEFAULT_HOSTNAME: krocbox
 
-  # RPM Fusion & extra packages
-  - type: script
-    scripts:
-      - files/scripts/rpmfusion-setup.sh
+  - type: rpm-ostree
+    install:
+      - tailscale
+      - starship
+      - ufw
+      - htop
+      - fastfetch
 
-  # Flatpak apps
   - type: default-flatpaks
-    configurations:
-      - install:
-          - org.mozilla.firefox
-          - com.discordapp.Discord
-          - im.riot.Element
-          - com.visualstudio.code
-          - org.audacityteam.Audacity
+    install:
+      - org.mozilla.firefox
+      - com.discordapp.Discord
+      - com.visualstudio.code
+      - org.gnome.World.PikaBackup
+      - com.spotify.Client
 
-  # Auto-Janitor (weekly cleanup)
   - type: script
     scripts:
-      - files/scripts/setup-krocbox-janitor.sh
-
-  # Custom files: wallpaper and logo
-  - type: files
-    files:
-      - from: files/krocbox-wallpaper.png
-        to: /usr/share/backgrounds/krocbox-wallpaper.png
-      - from: files/krocbox-logo.png
-        to: /usr/share/pixmaps/krocbox-logo.png
+      - branding.sh
