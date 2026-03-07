@@ -32,12 +32,8 @@ modules:
     scripts:
       - branding.sh
 
-  # Silent boot
+  # Silent boot (optional)
   - type: kargs
     kargs:
       - quiet
       - splash
-
-  # Boot splash
-  - type: plymouth
-    theme: krocbox
