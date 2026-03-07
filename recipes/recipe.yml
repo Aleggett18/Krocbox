@@ -31,3 +31,19 @@ modules:
   - type: script
     scripts:
       - branding.sh
+
+  # Silent boot (no scrolling text)
+  - type: kernel-arguments
+    args:
+      - quiet
+      - splash
+
+  # Boot splash (primary theme)
+  - type: plymouth
+    theme: krocbox
+    fallback: krocbox-fallback
+
+# ISO artifact output
+iso:
+  enabled: true
+  output: krocbox.iso
