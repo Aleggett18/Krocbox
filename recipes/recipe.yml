@@ -34,11 +34,10 @@ modules:
 
   # Silent boot
   - type: kargs
-    args:
-      - quiet
-      - splash
+    kargs:
+      quiet: true
+      splash: true
 
   # Boot splash
   - type: plymouth
     theme: krocbox
-    fallback: krocbox-fallback
