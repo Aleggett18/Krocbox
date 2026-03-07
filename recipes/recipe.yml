@@ -14,7 +14,6 @@ modules:
   - type: rpm-ostree
     install:
       - tailscale
-      - starship
       - ufw
       - htop
       - fastfetch
