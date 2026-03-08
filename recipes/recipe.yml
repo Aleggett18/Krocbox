@@ -31,7 +31,6 @@ modules:
           - io.github.shiftey.Desktop
           - com.getpostman.Postman
           - com.github.tchx84.Flatseal
-          - org.gnome.Tweaks
           - io.missioncenter.MissionCenter
           - org.flameshot.Flameshot
           - it.mijorus.gearlever
