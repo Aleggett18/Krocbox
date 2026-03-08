@@ -1,0 +1,12 @@
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+
+logo = Image("logo.png");
+
+logo_sprite = Sprite(logo);
+
+logo_w = logo.GetWidth();
+logo_h = logo.GetHeight();
+
+logo_sprite.Setx((screen_width - logo_w) / 2);
+logo_sprite.Sety((screen_height - logo_h) / 2);
