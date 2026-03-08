@@ -1,1 +1,8 @@
+[Plymouth Theme]
+Name=krocbox
+Description=krocbox Boot Splash
+ModuleName=script
 
+[script]
+ImageDir=/usr/share/plymouth/themes/krocbox
+ScriptFile=/usr/share/plymouth/themes/krocbox/krocbox.script
