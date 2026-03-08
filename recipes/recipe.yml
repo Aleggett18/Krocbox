@@ -41,7 +41,7 @@ modules:
   - type: script
     scripts:
       - branding.sh
-      - wallpaper.sh
+      
       
   # Silent boot (optional)
   - type: kargs
