@@ -1,6 +1,6 @@
 name: krocbox
 description: Krocbox OS | Cloud Native Gaming & DevOps Workstation
-base-image: ghcr.io/ublue-os/bazzite-dx
+base-image: ghcr.io/ublue-os/bluefin-nvidia
 image-version: stable
 
 modules:
