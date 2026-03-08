@@ -2,11 +2,6 @@ set -e
 
 echo "Applying Krocbox branding..."
 
-
-
-# Create pixmaps directory if needed
-mkdir -p /usr/share/pixmaps
-
 # Copy logo from repo into system
 cp /ctx/branding/krocbox-logo.png /usr/share/pixmaps/krocbox-logo.png
 
