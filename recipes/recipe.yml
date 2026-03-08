@@ -27,12 +27,11 @@ modules:
           - com.visualstudio.code
           - org.gnome.World.PikaBackup
           - com.spotify.Client
-          - com.valvesoftware.steam
-          - com.github.flathub.GitHubDesktop
-          - com.getpostman.postman
+          - com.valvesoftware.Steam
+          - io.github.shiftey.Desktop
+          - com.getpostman.Postman
           - com.github.tchx84.Flatseal
           - org.gnome.Tweaks
-          - dev.warp.warp
           - io.missioncenter.MissionCenter
           - org.flameshot.Flameshot
           - it.mijorus.gearlever
