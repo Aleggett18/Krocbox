@@ -2,7 +2,7 @@ set -e
 
 echo "Applying Krocbox branding..."
 
-echo "krocbox" > /etc/hostname
+
 
 # Create pixmaps directory if needed
 mkdir -p /usr/share/pixmaps
