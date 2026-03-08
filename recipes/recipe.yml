@@ -10,12 +10,12 @@ modules:
       ID: krocbox
       PRETTY_NAME: Krocbox OS
       DEFAULT_HOSTNAME: krocbox
-  
-   - type: files
-     files:
-        - source: system
-               destination: /
-  
+
+  - type: files
+    files:
+      - source: system
+        destination: /
+
   - type: rpm-ostree
     install:
       - tailscale
@@ -42,13 +42,11 @@ modules:
           - org.gnome.baobab
           - org.freedesktop.Platform.VulkanLayer.MangoHud
           - net.lutris.Lutris
-          
+
   - type: script
     scripts:
       - branding.sh
-      
-      
-  # Silent boot (optional)
+
   - type: kargs
     kargs:
       - quiet
