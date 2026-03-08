@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-intall -D /tmp/files/wallpapers/krocbox-wallpaper.png /usr/share/backgrounds/krocbox-wallpaper.png
+mkdir -p /usr/share/backgrounds/krocbox
 
-gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/krocbox-wallpaper.png"
+cp /files/wallpapers/krocbox-wallpaper.png \ /usr/share/backgrounds/krocbox/krocbox-wallpaper.png
